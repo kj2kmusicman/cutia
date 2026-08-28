@@ -318,6 +318,38 @@ export default function ComposerStepsPage() {
               <p className="text-gray-400 text-xs">Audio: {selectedAudio || 'None'}</p>
               <p className="text-gray-400 text-xs">AI: {aiEnhancement || 'None'}</p>
             </div>
+
+            {/* Create Deal Split Card - event card style */}
+            <div className="mt-6 space-y-3">
+              <button className="w-full rounded-2xl overflow-hidden border border-[#C8A84E]/20 hover:border-[#C8A84E]/40 transition-all text-left">
+                <div className="relative h-32">
+                  <img 
+                    src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=300&fit=crop" 
+                    alt="Deal split" 
+                    className="w-full h-full object-cover" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <p className="font-semibold text-white text-base">Create a Deal Split</p>
+                    <p className="text-gray-300 text-[13px]">Set your deal and invite partners</p>
+                  </div>
+                </div>
+              </button>
+              <button className="w-full rounded-2xl overflow-hidden border border-gray-800/50 hover:border-[#10B981]/30 transition-all text-left">
+                <div className="relative h-32">
+                  <img 
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=300&fit=crop" 
+                    alt="Just post" 
+                    className="w-full h-full object-cover" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <p className="font-semibold text-white text-base">Just Post</p>
+                    <p className="text-gray-300 text-[13px]">Share directly to your feed</p>
+                  </div>
+                </div>
+              </button>
+            </div>
           </div>
         )}
       </div>
