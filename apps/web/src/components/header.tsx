@@ -37,12 +37,12 @@ export function Header() {
 					<Link href="/" className="flex items-center gap-2.5">
 						<Image
 							src={DEFAULT_LOGO_URL}
-							alt="Cutia Logo"
+							alt="NextMoney Composer"
 							className="dark:invert"
 							width={28}
 							height={28}
 						/>
-						<span className="text-lg font-bold tracking-tight">Cutia</span>
+						<span className="text-lg font-bold tracking-tight"><span className="text-white">Next</span><span className="text-[#10B981]">Money</span> <span className="text-gray-400">Composer</span></span>
 					</Link>
 					<nav className="hidden items-center gap-1 md:flex">
 						{links.map((link) => (
