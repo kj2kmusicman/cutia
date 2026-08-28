@@ -67,7 +67,7 @@ export default function ComposerStepsPage() {
         <button onClick={handleBack} className={`p-2 rounded-xl ${currentStep > 0 ? 'hover:bg-white/5' : 'opacity-0 pointer-events-none'}`}>
           <ArrowLeft className="w-5 h-5 text-gray-400" />
         </button>
-        <h1 className="text-base font-bold">
+        <h1 className="text-base font-bold flex-1 text-left">
           <span className="text-white">Next</span><span className="text-[#10B981]">Money</span>{" "}
           <span className="text-gray-400">Composer</span>
         </h1>
@@ -96,7 +96,14 @@ export default function ComposerStepsPage() {
       <div className="flex-1 overflow-y-auto p-5">
         {step.id === 'assets' && (
           <div>
-            <h2 className="text-xl font-bold text-white mb-2">Add Your Media</h2>
+            {/* Hero Image */}
+            <div className="relative h-40 rounded-2xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=600&h=300&fit=crop" alt="Add media" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <h2 className="text-xl font-bold text-white">Add Your Media</h2>
+              </div>
+            </div>
             <p className="text-gray-500 text-sm mb-4">Upload videos, photos, or audio files</p>
             {/* Upload Zone */}
             <div className="border-2 border-dashed border-gray-700 rounded-2xl p-8 text-center mb-4 hover:border-[#10B981]/40 transition-colors cursor-pointer"
@@ -144,7 +151,14 @@ export default function ComposerStepsPage() {
 
         {step.id === 'text' && (
           <div>
-            <h2 className="text-xl font-bold text-white mb-2">Add Text</h2>
+            {/* Hero Image */}
+            <div className="relative h-40 rounded-2xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=300&fit=crop" alt="Add text" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <h2 className="text-xl font-bold text-white">Add Text</h2>
+              </div>
+            </div>
             <p className="text-gray-500 text-sm mb-4">Add captions or text overlays</p>
             <input
               type="text"
@@ -178,7 +192,14 @@ export default function ComposerStepsPage() {
 
         {step.id === 'stickers' && (
           <div>
-            <h2 className="text-xl font-bold text-white mb-2">Add Stickers</h2>
+            {/* Hero Image */}
+            <div className="relative h-40 rounded-2xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&h=300&fit=crop" alt="Add stickers" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <h2 className="text-xl font-bold text-white">Add Stickers</h2>
+              </div>
+            </div>
             <p className="text-gray-500 text-sm mb-4">Choose stickers and effects</p>
             <div className="grid grid-cols-4 gap-3">
               {['🔥', '💚', '✨', '🎉', '💰', '⭐', '🚀', '💎'].map((emoji, i) => (
@@ -205,7 +226,14 @@ export default function ComposerStepsPage() {
 
         {step.id === 'audio' && (
           <div>
-            <h2 className="text-xl font-bold text-white mb-2">Add Audio</h2>
+            {/* Hero Image */}
+            <div className="relative h-40 rounded-2xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&h=300&fit=crop" alt="Add audio" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <h2 className="text-xl font-bold text-white">Add Audio</h2>
+              </div>
+            </div>
             <p className="text-gray-500 text-sm mb-4">Choose background music</p>
             <div className="space-y-2">
               {[
@@ -235,7 +263,14 @@ export default function ComposerStepsPage() {
 
         {step.id === 'ai' && (
           <div>
-            <h2 className="text-xl font-bold text-white mb-2">AI Enhancement</h2>
+            {/* Hero Image */}
+            <div className="relative h-40 rounded-2xl overflow-hidden mb-4">
+              <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=300&fit=crop" alt="AI enhancement" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-3 left-4 right-4">
+                <h2 className="text-xl font-bold text-white">AI Enhancement</h2>
+              </div>
+            </div>
             <p className="text-gray-500 text-sm mb-4">Let AI improve your content</p>
             <div className="space-y-2">
               {[
