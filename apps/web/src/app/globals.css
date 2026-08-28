@@ -15,7 +15,7 @@
   --popover: hsl(0, 0%, 100%);
   --popover-hover: hsl(0, 0%, 96%);
   --popover-foreground: hsl(0 0% 2%);
-  --primary: #009dff;
+  --primary: #10B981;
   --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(204, 100%, 97%);
   --secondary-border: hsl(204, 100%, 94%);
@@ -52,7 +52,7 @@
   --foreground: hsl(0 0% 13%);
   --card: hsl(0, 0%, 98%);
   --card-foreground: hsl(0 0% 13%);
-  --primary-foreground: hsl(0, 0%, 98%);
+  --primary-foreground: #0A0A0A;
   --secondary: hsl(204, 100%, 95%);
   --secondary-border: hsl(204, 100%, 92%);
   --secondary-foreground: hsl(200, 98%, 37%);
