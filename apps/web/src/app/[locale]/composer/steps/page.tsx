@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "@/lib/navigation";
 import { 
-  ArrowLeft, ArrowRight, Check, X, Upload, Type, Sticker, Music, Sparkles, Eye
+  ArrowLeft, ArrowRight, Check, X, Upload, Type, Sticker, Music, Sparkles, Eye, Video
 } from "lucide-react";
 
 const STEPS = [
   { id: 'assets', label: 'Assets', icon: Upload, description: 'Add your media' },
   { id: 'text', label: 'Text', icon: Type, description: 'Add text overlays' },
-  { id: 'stickers', label: 'Stickers', icon: Sticker, description: 'Add stickers & effects' },
+  { id: 'timeline', label: 'Timeline', icon: Video, description: 'Edit your timeline' },
   { id: 'audio', label: 'Audio', icon: Music, description: 'Add music & sound' },
   { id: 'ai', label: 'AI', icon: Sparkles, description: 'AI enhancements' },
   { id: 'preview', label: 'Preview', icon: Eye, description: 'Review your creation' },
@@ -190,36 +190,37 @@ export default function ComposerStepsPage() {
           </div>
         )}
 
-        {step.id === 'stickers' && (
+        {step.id === 'timeline' && (
           <div>
             {/* Hero Image */}
             <div className="relative h-40 rounded-2xl overflow-hidden mb-4">
-              <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&h=300&fit=crop" alt="Add stickers" className="w-full h-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?w=600&h=300&fit=crop" alt="Edit timeline" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               <div className="absolute bottom-3 left-4 right-4">
-                <h2 className="text-xl font-bold text-white">Add Stickers</h2>
+                <h2 className="text-xl font-bold text-white">Edit Timeline</h2>
               </div>
             </div>
-            <p className="text-gray-500 text-sm mb-4">Choose stickers and effects</p>
-            <div className="grid grid-cols-4 gap-3">
-              {['🔥', '💚', '✨', '🎉', '💰', '⭐', '🚀', '💎'].map((emoji, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    const sticker = { id: `sticker-${Date.now()}-${i}`, emoji, name: emoji };
-                    if (selectedStickers.find(s => s.emoji === emoji)) {
-                      setSelectedStickers(selectedStickers.filter(s => s.emoji !== emoji));
-                    } else {
-                      setSelectedStickers([...selectedStickers, sticker]);
-                    }
-                  }}
-                  className={`aspect-square rounded-xl text-3xl flex items-center justify-center ${
-                    selectedStickers.find(s => s.emoji === emoji) ? 'bg-[#10B981]/20 border border-[#10B981]' : 'bg-white/5 border border-gray-800'
-                  }`}
-                >
-                  {emoji}
-                </button>
-              ))}
+            <p className="text-gray-500 text-sm mb-4">Arrange your clips, trim, and perfect your video</p>
+            <div className="bg-[#111] rounded-2xl border border-gray-800 p-4">
+              <p className="text-white font-semibold mb-3">Timeline Editor</p>
+              <p className="text-gray-500 text-sm">
+                Your media will appear here as a multi-track timeline. Drag to arrange clips, trim edges, and add transitions.
+              </p>
+              <div className="mt-4 space-y-2">
+                {mediaItems.length > 0 ? (
+                  mediaItems.map(item => (
+                    <div key={item.id} className="bg-[#0A0A0A] rounded-xl p-3 flex items-center gap-3 border border-gray-800">
+                      <span className="text-xl">{item.type === 'video' ? '🎬' : item.type === 'image' ? '📷' : '🎵'}</span>
+                      <div className="flex-1">
+                        <p className="text-white text-sm truncate">{item.name}</p>
+                        <p className="text-gray-500 text-xs">{item.type}</p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-gray-600 text-sm text-center py-6">No media added yet. Go back to Assets to add media.</p>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -271,7 +272,27 @@ export default function ComposerStepsPage() {
                 <h2 className="text-xl font-bold text-white">AI Enhancement</h2>
               </div>
             </div>
-            <p className="text-gray-500 text-sm mb-4">Let AI improve your content</p>
+            <p className="text-gray-500 text-sm mb-4">Let AI improve your content or add stickers</p>
+            <div className="grid grid-cols-4 gap-3 mb-4">
+              {['🔥', '💚', '✨', '🎉', '💰', '⭐', '🚀', '💎'].map((emoji, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    const sticker = { id: `sticker-${Date.now()}-${i}`, emoji, name: emoji };
+                    if (selectedStickers.find(s => s.emoji === emoji)) {
+                      setSelectedStickers(selectedStickers.filter(s => s.emoji !== emoji));
+                    } else {
+                      setSelectedStickers([...selectedStickers, sticker]);
+                    }
+                  }}
+                  className={`aspect-square rounded-xl text-3xl flex items-center justify-center ${
+                    selectedStickers.find(s => s.emoji === emoji) ? 'bg-[#10B981]/20 border border-[#10B981]' : 'bg-white/5 border border-gray-800'
+                  }`}
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
             <div className="space-y-2">
               {[
                 { id: 'auto-caption', label: 'Auto Captions', desc: 'Generate captions from audio', emoji: '💬' },
