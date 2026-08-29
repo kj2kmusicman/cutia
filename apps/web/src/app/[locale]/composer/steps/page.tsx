@@ -24,6 +24,7 @@ export default function ComposerStepsPage() {
   const [selectedStickers, setSelectedStickers] = useState<Array<{ id: string; emoji: string; name: string }>>([]);
   const [selectedAudio, setSelectedAudio] = useState<string | null>(null);
   const [aiEnhancement, setAiEnhancement] = useState<string | null>(null);
+  const [selectedItem, setSelectedItem] = useState<{ id: string; type: string; url: string; name: string } | null>(null);
 
   const step = STEPS[currentStep];
 
@@ -57,7 +58,8 @@ export default function ComposerStepsPage() {
       selectedAudio,
       aiEnhancement,
     };
-    router.push('/editor/new-project');
+    const returnTo = (window as any).__nextmoney_return_to || '/explore';
+    router.push(returnTo);
   };
 
   return (
@@ -374,6 +376,29 @@ export default function ComposerStepsPage() {
           </div>
         )}
       </div>
+
+      {/* Media Preview Modal */}
+      {selectedItem && (
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-5" onClick={() => setSelectedItem(null)}>
+          <div className="relative w-full max-w-lg bg-[#0A0A0A] rounded-2xl border border-gray-800 p-4" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setSelectedItem(null)} className="absolute top-3 right-3 p-2 hover:bg-white/5 rounded-lg">
+              <X className="w-5 h-5 text-gray-400" />
+            </button>
+            {selectedItem.type === 'image' ? (
+              <img src={selectedItem.url} alt={selectedItem.name} className="w-full rounded-xl object-contain max-h-80" />
+            ) : selectedItem.type === 'video' ? (
+              <video src={selectedItem.url} controls className="w-full rounded-xl max-h-80" playsInline />
+            ) : (
+              <div className="text-center py-8">
+                <span className="text-4xl">🎵</span>
+                <p className="text-white font-semibold mt-2">{selectedItem.name}</p>
+                <p className="text-gray-500 text-xs mt-1">Audio preview coming soon</p>
+              </div>
+            )}
+            <p className="text-white text-sm font-semibold mt-3 text-center truncate">{selectedItem.name}</p>
+          </div>
+        </div>
+      )}
 
       {/* Bottom Actions */}
       <div className="px-4 py-3 border-t border-gray-800 flex gap-3 flex-shrink-0">
