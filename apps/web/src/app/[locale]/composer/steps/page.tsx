@@ -58,8 +58,9 @@ export default function ComposerStepsPage() {
       selectedAudio,
       aiEnhancement,
     };
-    const returnTo = (window as any).__nextmoney_return_to || '/explore';
-    router.push(returnTo);
+    // Return to the page that opened the composer
+    const returnTo = document.referrer || 'https://nextmoney.app/explore';
+    window.location.href = returnTo;
   };
 
   return (
@@ -139,8 +140,14 @@ export default function ComposerStepsPage() {
               <div className="space-y-2">
                 {mediaItems.map(item => (
                   <div key={item.id} className="flex items-center gap-3 bg-[#111] rounded-xl p-3">
-                    <span className="text-xl">{item.type === 'video' ? '🎬' : item.type === 'image' ? '📷' : '🎵'}</span>
-                    <span className="text-white text-sm flex-1 truncate">{item.name}</span>
+                    <button
+                      onClick={() => setSelectedItem(item)}
+                      className="flex items-center gap-3 flex-1 text-left"
+                    >
+                      <span className="text-xl">{item.type === 'video' ? '🎬' : item.type === 'image' ? '📷' : '🎵'}</span>
+                      <span className="text-white text-sm flex-1 truncate">{item.name}</span>
+                      <span className="text-[#10B981] text-xs font-semibold">Preview</span>
+                    </button>
                     <button onClick={() => setMediaItems(mediaItems.filter(m => m.id !== item.id))} className="p-1 hover:bg-white/5 rounded-lg">
                       <X className="w-4 h-4 text-gray-500" />
                     </button>
